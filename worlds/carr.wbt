@@ -1,0 +1,658 @@
+#VRML_SIM R2020a utf8
+WorldInfo {
+  contactProperties [
+    ContactProperties {
+      material1 "tou1"
+      coulombFriction [
+        0
+      ]
+    }
+  ]
+}
+Viewpoint {
+  orientation -0.9999999850273218 0.00015260731521077168 8.15865407986485e-05 0.9095460964704805
+  position -0.12450709265939446 5.292926859756906 4.906534337537549
+}
+Background {
+  skyColor [
+    1 1 1
+  ]
+}
+Solid {
+  children [
+    DEF plane Shape {
+      appearance Appearance {
+        material DEF tou2 Material {
+        }
+      }
+      geometry Plane {
+        size 5 5
+      }
+    }
+  ]
+  boundingObject USE plane
+}
+Group {
+}
+TexturedBackgroundLight {
+}
+Robot {
+  translation -1.96 0.04 2.01
+  rotation 0 1 0 1.5708
+  scale 0.5 0.5 0.5
+  children [
+    DEF body Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0 1 0
+        }
+      }
+      geometry Box {
+        size 0.4 0.06 0.3
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 0 -1
+        anchor -0.08 0 -0.17
+      }
+      device [
+        RotationalMotor {
+          name "l_wheel"
+          maxVelocity 20
+          maxTorque 20
+        }
+      ]
+      endPoint Solid {
+        translation -0.08 0 -0.17
+        rotation 1 0 0 1.5708
+        children [
+          DEF l_wheel Shape {
+            appearance Appearance {
+              material Material {
+                diffuseColor 0.333333 0 0
+              }
+            }
+            geometry Cylinder {
+              height 0.05
+              radius 0.08
+            }
+          }
+        ]
+        boundingObject USE l_wheel
+        physics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 0 -1
+        anchor -0.08 0 0.17
+      }
+      device [
+        RotationalMotor {
+          name "r_wheel"
+          maxVelocity 20
+          maxTorque 20
+        }
+      ]
+      endPoint Solid {
+        translation -0.08 0 0.17
+        rotation 1 0 0 1.5708
+        children [
+          DEF r_wheel Shape {
+            appearance Appearance {
+              material Material {
+                diffuseColor 0.333333 0 0
+              }
+            }
+            geometry Cylinder {
+              height 0.05
+              radius 0.08
+            }
+          }
+        ]
+        name "solid(1)"
+        boundingObject USE r_wheel
+        physics Physics {
+        }
+      }
+    }
+    Solid {
+      translation 0.1 0 0
+      children [
+        DEF sphe Shape {
+          appearance Appearance {
+            material DEF tou1 Material {
+              diffuseColor 0.666667 0 1
+            }
+          }
+          geometry Sphere {
+            radius 0.07
+          }
+        }
+      ]
+      name "solid(2)"
+      contactMaterial "tou1"
+      boundingObject USE sphe
+      physics Physics {
+      }
+    }
+    Camera {
+      translation 0.338991 0.113236 -4.97352e-07
+      rotation 0.5199881374825417 0.6776611791705899 0.5199881374825417 -1.9504353071795864
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.666667 0 0
+            metalnessMap ImageTexture {
+            }
+          }
+          geometry Box {
+            size 0.08 0.08 0.08
+          }
+          castShadows FALSE
+        }
+      ]
+      recognitionColors [
+        0.666667 0 0
+      ]
+      fieldOfView 2
+      width 80
+      height 80
+      motionBlur 1
+    }
+    InertialUnit {
+      rotation 0 1 0 -1.5708
+      name "imu"
+    }
+    DistanceSensor {
+      translation 0.27 0 0
+      name "diss"
+      lookupTable [
+        0 0 0
+        0.6 1000 0
+      ]
+    }
+  ]
+  boundingObject USE body
+  physics Physics {
+  }
+  controller "car"
+}
+Solid {
+  translation -2.01 0.001 1.02
+  rotation 0 1 0 3.14159
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0 0 0
+        }
+      }
+      geometry Plane {
+        size 0.05 2
+      }
+    }
+  ]
+  name "solid(8)"
+}
+Solid {
+  translation -0.0399983 0.001 1.06
+  rotation 0 1 0 3.14159
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0 0 0
+        }
+      }
+      geometry Plane {
+        size 0.05 2
+      }
+    }
+  ]
+  name "solid(3)"
+}
+Solid {
+  translation 0.79001 0.001 1.05
+  rotation 0 1 0 3.14159
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0 0 0
+        }
+      }
+      geometry Plane {
+        size 0.05 2
+      }
+    }
+  ]
+  name "solid(6)"
+}
+Solid {
+  translation 0.48001 0.001 -1.42
+  rotation 0 1 0 3.14159
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0 0 0
+        }
+      }
+      geometry Plane {
+        size 0.05 1
+      }
+    }
+  ]
+  name "solid(9)"
+}
+Solid {
+  translation 2.42001 0.001 1.05
+  rotation 0 1 0 3.14159
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0 0 0
+        }
+      }
+      geometry Plane {
+        size 0.05 2
+      }
+    }
+  ]
+  name "solid(15)"
+}
+Solid {
+  translation -1.02 0.001 1.02
+  rotation 0 -1 0 -1.5707953071795862
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0 0 0
+        }
+      }
+      geometry Plane {
+        size 0.05 2
+      }
+    }
+  ]
+  name "solid(1)"
+}
+Solid {
+  translation 0.8 0.001 -0.91
+  rotation 0 -1 0 -1.5707953071795862
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0 0 0
+        }
+      }
+      geometry Plane {
+        size 0.05 2
+      }
+    }
+  ]
+  name "solid(4)"
+}
+Solid {
+  translation -1.18 0.001 -0.91
+  rotation 0 -1 0 -1.5707953071795862
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0 0 0
+        }
+      }
+      geometry Plane {
+        size 0.05 2
+      }
+    }
+  ]
+  name "solid(14)"
+}
+Solid {
+  translation -1.02 0.001 0.04
+  rotation 0 -1 0 -1.5707953071795862
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0 0 0
+        }
+      }
+      geometry Plane {
+        size 0.05 2
+      }
+    }
+  ]
+  name "solid(2)"
+}
+Solid {
+  translation -1.17 0.001 -1.85
+  rotation 0 -1 0 -1.5707953071795862
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0 0 0
+        }
+      }
+      geometry Plane {
+        size 0.05 2
+      }
+    }
+  ]
+  name "solid(5)"
+}
+Solid {
+  translation 0.79 0.001 -1.85
+  rotation 0 -1 0 -1.5707953071795862
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0 0 0
+        }
+      }
+      geometry Plane {
+        size 0.05 2
+      }
+    }
+  ]
+  name "solid(22)"
+}
+Solid {
+  translation 1.3 0.001 0.75
+  rotation 0 -1 0 -1.5707953071795862
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0 0 0
+        }
+      }
+      geometry Plane {
+        size 0.05 1
+      }
+    }
+  ]
+  name "solid(16)"
+}
+Solid {
+  translation 1.77 0.001 -0.44
+  rotation 0 1 0 3.14159
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0 0 0
+        }
+      }
+      geometry Plane {
+        size 0.05 1
+      }
+    }
+  ]
+  name "solid(17)"
+}
+Solid {
+  translation -1.01 0.001 -1.38
+  rotation 0 1 0 3.14159
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0 0 0
+        }
+      }
+      geometry Plane {
+        size 0.05 1
+      }
+    }
+  ]
+  name "solid(20)"
+}
+Solid {
+  translation 1.3 0.001 0.05
+  rotation 0 1 0 -1.5707953071795862
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0 0 0
+        }
+      }
+      geometry Plane {
+        size 0.05 1
+      }
+    }
+  ]
+  name "solid(18)"
+}
+Solid {
+  translation 1.19 0.001 2.03
+  rotation 0 -1 0 -1.5707953071795862
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0 0 0
+        }
+      }
+      geometry Plane {
+        size 0.05 2.5
+      }
+    }
+  ]
+  name "solid(7)"
+}
+Solid {
+  translation -2.01 0.002 1.01999
+  rotation 0 1 0 3.14159
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0
+        }
+      }
+      geometry Plane {
+        size 0.15 0.15
+      }
+    }
+  ]
+  name "solid(10)"
+}
+Solid {
+  translation -0.05 0.002 1.01999
+  rotation 0 1 0 3.14159
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0
+        }
+      }
+      geometry Plane {
+        size 0.15 0.15
+      }
+    }
+  ]
+  name "solid(23)"
+}
+Solid {
+  translation 0.79 0.002 2.01999
+  rotation 0 1 0 3.14159
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0
+        }
+      }
+      geometry Plane {
+        size 0.15 0.15
+      }
+    }
+  ]
+  name "solid(11)"
+}
+Solid {
+  translation 0.79 0.002 0.74999
+  rotation 0 1 0 3.14159
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0
+        }
+      }
+      geometry Plane {
+        size 0.15 0.15
+      }
+    }
+  ]
+  name "solid(21)"
+}
+Solid {
+  translation 0.48 0.002 -0.93001
+  rotation 0 1 0 3.14159
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0
+        }
+      }
+      geometry Plane {
+        size 0.15 0.15
+      }
+    }
+  ]
+  name "solid(13)"
+}
+Solid {
+  translation -1.01 0.002 -0.93001
+  rotation 0 1 0 3.14159
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0
+        }
+      }
+      geometry Plane {
+        size 0.15 0.15
+      }
+    }
+  ]
+  name "solid(24)"
+}
+Solid {
+  translation 0.48 0.002 -1.86001
+  rotation 0 1 0 3.14159
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0
+        }
+      }
+      geometry Plane {
+        size 0.15 0.15
+      }
+    }
+  ]
+  name "solid(19)"
+}
+Solid {
+  translation -1.02 0.002 -1.86001
+  rotation 0 1 0 3.14159
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0
+        }
+      }
+      geometry Plane {
+        size 0.15 0.15
+      }
+    }
+  ]
+  name "solid(25)"
+}
+Solid {
+  translation 1.77 0.002 -1.86
+  rotation 0 1 0 3.14159
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0 1 0
+        }
+      }
+      geometry Plane {
+        size 0.15 0.15
+      }
+    }
+  ]
+  name "solid(12)"
+}
+Solid {
+  translation -0.98 0.06 0.05
+  children [
+    DEF OBJ Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.666667 0 0
+        }
+      }
+      geometry Box {
+        size 0.1 0.1 0.1
+      }
+    }
+  ]
+  name "obj"
+  boundingObject USE OBJ
+}
+Solid {
+  translation 0.79 0.06 1.23
+  children [
+    DEF OBJ Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.666667 0 0
+        }
+      }
+      geometry Box {
+        size 0.1 0.1 0.1
+      }
+    }
+  ]
+  name "obj(1)"
+  boundingObject USE OBJ
+}
+Solid {
+  translation -0.35 0.06 -0.91
+  children [
+    DEF OBJ Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.666667 0 0
+        }
+      }
+      geometry Box {
+        size 0.1 0.1 0.1
+      }
+    }
+  ]
+  name "obj(2)"
+  boundingObject USE OBJ
+}
